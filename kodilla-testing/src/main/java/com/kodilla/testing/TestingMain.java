@@ -19,5 +19,15 @@ public class TestingMain {
         int b = 6;
         System.out.println(calculator.add(a,b));
         System.out.println(calculator.subtract(a, b));
+
+        if(a+b == 10)
+            System.out.println("jest OK");
+         else
+            System.out.println("error");
+
+        if(a-b == -2)
+            System.out.println("jest OK");
+        else
+            System.out.println("error");
     }
 }
