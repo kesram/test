@@ -1,33 +1,24 @@
 package com.kodilla.testing;
 import com.kodilla.testing.user.SimpleUser;
 import com.kodilla.testing.calculator.Calculator;
+import com.kodilla.testing.collection.OddNumbersExterminator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestingMain {
     public static void main(String[] args) {
-        SimpleUser simpleUser = new SimpleUser("theForumUser");
+        OddNumbersExterminator test = new OddNumbersExterminator();
 
-        String result = simpleUser.getUserName();
-        if(result.equals("theForumUser")) {
-            System.out.println("test OK");
-        } else {
-            System.out.println("error!");
-        }
-        System.out.println("Test - pierwszy test jednostkowy:");
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(0,2);
+        numbers.add(1,4);
+        numbers.add(2,6);
+        numbers.add(3,8);
+        numbers.add(4,10);
 
-        Calculator calculator = new Calculator();
-        int a = 4;
-        int b = 6;
-        System.out.println(calculator.add(a,b));
-        System.out.println(calculator.subtract(a, b));
-
-        if(calculator.add(a,b) == 10)
-            System.out.println("jest OK");
-         else
-            System.out.println("error");
-
-        if(calculator.subtract(a, b) == -2)
-            System.out.println("jest OK");
-        else
-            System.out.println("error");
+        //test.exterminate();
+        //test.filterEven()
     }
+
 }
