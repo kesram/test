@@ -23,17 +23,10 @@ public class CollectionTestSuite {
     void testOddNumbersExterminatorEmptyList() {
         //Given
         OddNumbersExterminator test = new OddNumbersExterminator();
-        //When
         List<Integer> numbers = new ArrayList<>();
         List<Integer> result = new ArrayList<>();
-        System.out.println(numbers);
-        for (int number : numbers) {
-            int b = number % 2;
-            if (b == 0) {
-                result.add(number);
-            }
-        }
-        System.out.println(result);
+        //When
+        test.exterminate(numbers);
         //Then
         Assertions.assertEquals(result, numbers);
     }
@@ -41,16 +34,16 @@ public class CollectionTestSuite {
     @DisplayName("Check if arrayList return only even numbers")
     @Test
     void testOddNumbersExterminatorNormalList() {
+
         //Given
         OddNumbersExterminator test = new OddNumbersExterminator();
-        //When
         List<Integer> result = new ArrayList<>();
         List<Integer> numbers = new ArrayList<>();
         numbers.add(0, 2);
         numbers.add(1, 4);
         numbers.add(2, 6);
         System.out.println(numbers);
-
+        //When
         for (int number : numbers) {
             int b = number % 2;
             if (b == 0) {
