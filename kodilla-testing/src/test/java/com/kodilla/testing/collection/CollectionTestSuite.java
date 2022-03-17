@@ -3,6 +3,7 @@ package com.kodilla.testing.collection;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,22 +38,12 @@ public class CollectionTestSuite {
 
         //Given
         OddNumbersExterminator test = new OddNumbersExterminator();
-        List<Integer> result = new ArrayList<>();
-        List<Integer> numbers = new ArrayList<>();
-        numbers.add(0, 2);
-        numbers.add(1, 4);
-        numbers.add(2, 6);
-        System.out.println(numbers);
+        List<Integer> numbers = Arrays.asList(1,3,2,4,6);
+        List<Integer> expected = Arrays.asList(2,4,6);
         //When
-        for (int number : numbers) {
-            int b = number % 2;
-            if (b == 0) {
-                result.add(number);
-            } else
-                result.add(0);
-        }
-        System.out.println(result);
+        List<Integer> result = test.exterminate(numbers);
         //Then
-        Assertions.assertEquals(result, numbers);
+        Assertions.assertEquals(expected, result);
+
     }
 }
