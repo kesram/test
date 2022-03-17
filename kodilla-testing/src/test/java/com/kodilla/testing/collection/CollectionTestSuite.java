@@ -25,11 +25,11 @@ public class CollectionTestSuite {
         //Given
         OddNumbersExterminator test = new OddNumbersExterminator();
         List<Integer> numbers = new ArrayList<>();
-        List<Integer> result = new ArrayList<>();
+        List<Integer> expected = new ArrayList<>();
         //When
-        test.exterminate(numbers);
+        List<Integer> result = test.exterminate(numbers);
         //Then
-        Assertions.assertEquals(result, numbers);
+        Assertions.assertEquals(expected, result);
     }
 
     @DisplayName("Check if arrayList return only even numbers")
