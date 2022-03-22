@@ -28,39 +28,39 @@ public class ShapeCollectorTestSuite {
     }
 
         @Test
-        void testAddFigure(List<Shape> shape) {
+        void testAddFigure(Shape shape) {
             //Given
-            Circle circle = new Circle(2.5, "koło1");
+            Circle circle = new Circle(2.5, "Circle1");
             ShapeCollector test = new ShapeCollector();
             //When
-            test.addFigure((List<Shape>) circle);
+            test.addFigure(circle);
             //Then
-            Assertions.assertEquals(1, test.getFigureQuantity());
+            Assertions.assertEquals(1, test.getShapes().size());
 
         }
 
         @Test
         void testRemoveFigure(Shape shape) {
             //Given
-            Triangle triangle = new Triangle(2,4,"tr3");
-            Square square = new Square(4, "kwadrat3");
-            Circle circle = new Circle(2.3, "kolo2");
+            Triangle triangle = new Triangle(2,4,"Triangle1");
+            Square square = new Square(4, "Square1");
+            Circle circle = new Circle(2.3, "Circle");
             ShapeCollector test = new ShapeCollector();
-            test.addFigure((List<Shape>) square);
+            test.addFigure(square);
             //When
             test.removeFigure(square);
             //Then
-            Assertions.assertEquals(0, test.getFigureQuantity());
+            Assertions.assertEquals(0, test.getShapes().size());
         }
 
         @Test
         void testGetFigure(int n) {
             //Given
-            Triangle triangle = new Triangle(3,5, "tr4");
-            Square square = new Square(3, "kwadrat4");
-            Circle circle = new Circle(1.3, "kolo3");
+            Triangle triangle = new Triangle(3,5, "Triangle");
+            Square square = new Square(3, "Square");
+            Circle circle = new Circle(1.3, "Circle");
             ShapeCollector test = new ShapeCollector();
-            test.addFigure((List<Shape>) triangle);
+            test.addFigure(triangle);
             //When
             List<Shape> result = test.getFigure(0);
             //Then
