@@ -13,9 +13,8 @@ public class ShapeCollector {
         shapes.remove(shape);
     }
 
-    public List<Shape> getFigure(int n){
-        shapes.get(n);
-        return null;
+    public Shape getFigure(int n){
+        return shapes.get(n);
     }
 
     public List<Shape> getShapes() {

@@ -4,16 +4,14 @@ import com.sun.security.jgss.GSSUtil;
 
 public class Circle implements Shape{
     private double radius;
-    private String name;
 
-    public Circle(double radius, String name) {
+    public Circle() {
         this.radius = radius;
-        this.name = name;
     }
 
     @Override
     public String getShapeName() {
-        return getName();
+        return "Circle";
     }
 
     @Override
@@ -25,7 +23,4 @@ public class Circle implements Shape{
         return radius;
     }
 
-    public String getName() {
-        return name;
-    }
 }

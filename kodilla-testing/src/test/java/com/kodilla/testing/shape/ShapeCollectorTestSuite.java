@@ -30,10 +30,10 @@ public class ShapeCollectorTestSuite {
         @Test
         void testAddFigure(Shape shape) {
             //Given
-            Circle circle = new Circle(2.5, "Circle1");
+            Circle circle = new Circle();
             ShapeCollector test = new ShapeCollector();
             //When
-            test.addFigure(circle);
+            test.addFigure((Shape) circle);
             //Then
             Assertions.assertEquals(1, test.getShapes().size());
 
@@ -42,9 +42,7 @@ public class ShapeCollectorTestSuite {
         @Test
         void testRemoveFigure(Shape shape) {
             //Given
-            Triangle triangle = new Triangle(2,4,"Triangle1");
-            Square square = new Square(4, "Square1");
-            Circle circle = new Circle(2.3, "Circle");
+            Square square = new Square();
             ShapeCollector test = new ShapeCollector();
             test.addFigure(square);
             //When
@@ -56,26 +54,24 @@ public class ShapeCollectorTestSuite {
         @Test
         void testGetFigure(int n) {
             //Given
-            Triangle triangle = new Triangle(3,5, "Triangle");
-            Square square = new Square(3, "Square");
-            Circle circle = new Circle(1.3, "Circle");
+            Triangle triangle = new Triangle();
             ShapeCollector test = new ShapeCollector();
             test.addFigure(triangle);
             //When
-            List<Shape> result = test.getFigure(0);
+            test.getFigure(0);
             //Then
-            Assertions.assertEquals(triangle, result);
+            Assertions.assertEquals(triangle, test.getFigure(0));
         }
 
         @Test
         void testShowFigures() {
             //Given
-            Triangle triangle = new Triangle(5,3,"Triangle");
-            Square square = new Square(5.5, "Square");
-            Circle circle = new Circle(4, "Circle");
+            Triangle triangle = new Triangle();
+            Square square = new Square();
+            Circle circle = new Circle();
             ShapeCollector test = new ShapeCollector();
             //When
-            String result = circle.getName() + square.getName() + triangle.getName();
+            String result = circle.getShapeName() + square.getShapeName() + triangle.getShapeName();
             //Then
             Assertions.assertEquals("CircleSquareTriangle", result);
         }
