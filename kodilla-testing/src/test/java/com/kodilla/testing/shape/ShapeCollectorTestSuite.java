@@ -27,36 +27,56 @@ public class ShapeCollectorTestSuite {
         System.out.println("Preparing to execute test #" + testCounter);
     }
 
-    @Test
-    void testAddFigure(Shape shape){
-        //Given
-        List<Triangle> triangle = new ArrayList<>();
-        List<Square> square = new ArrayList<>();
-        List<Circle> circle = new ArrayList<>();
-        ShapeCollector test = new ShapeCollector(circle, square, triangle);
-        //When
-        test.addFigure((Shape) circle);
-        //Then
-        Assertions.assertEquals(1, test.getFigureQuantity(1));
-    }
-    @Test
-    void testRemoveFigure(Shape shape){
-        //Given
-        List<Triangle> triangle = new ArrayList<>();
-        List<Square> square = new ArrayList<>();
-        List<Circle> circle = new ArrayList<>();
-        ShapeCollector test = new ShapeCollector(circle, square, triangle);
-        //When
-        test.removeFigure((Shape) circle);
-        //Then
-        Assertions.assertEquals(0,test.getFigureQuantity(0));
-    }
-    @Test
-    void testGetFigure(int n){
-        //Given
+        @Test
+        void testAddFigure(List<Shape> shape) {
+            //Given
+            Circle circle = new Circle(2.5, "koło1");
+            ShapeCollector test = new ShapeCollector();
+            //When
+            test.addFigure((List<Shape>) circle);
+            //Then
+            Assertions.assertEquals(1, test.getFigureQuantity());
 
-        //When
+        }
 
-        //Then
-    }
+        @Test
+        void testRemoveFigure(Shape shape) {
+            //Given
+            Triangle triangle = new Triangle(2,4,"tr3");
+            Square square = new Square(4, "kwadrat3");
+            Circle circle = new Circle(2.3, "kolo2");
+            ShapeCollector test = new ShapeCollector();
+            test.addFigure((List<Shape>) square);
+            //When
+            test.removeFigure(square);
+            //Then
+            Assertions.assertEquals(0, test.getFigureQuantity());
+        }
+
+        @Test
+        void testGetFigure(int n) {
+            //Given
+            Triangle triangle = new Triangle(3,5, "tr4");
+            Square square = new Square(3, "kwadrat4");
+            Circle circle = new Circle(1.3, "kolo3");
+            ShapeCollector test = new ShapeCollector();
+            test.addFigure((List<Shape>) triangle);
+            //When
+            List<Shape> result = test.getFigure(0);
+            //Then
+            Assertions.assertEquals(triangle, result);
+        }
+
+        @Test
+        void testShowFigures() {
+            //Given
+            Triangle triangle = new Triangle(5,3,"Triangle");
+            Square square = new Square(5.5, "Square");
+            Circle circle = new Circle(4, "Circle");
+            ShapeCollector test = new ShapeCollector();
+            //When
+            String result = circle.getName() + square.getName() + triangle.getName();
+            //Then
+            Assertions.assertEquals("CircleSquareTriangle", result);
+        }
 }

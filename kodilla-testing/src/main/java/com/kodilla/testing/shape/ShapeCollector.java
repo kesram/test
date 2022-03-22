@@ -4,29 +4,56 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShapeCollector {
-    private List<Circle> circle = new ArrayList<>();
-    private List<Square> square = new ArrayList<>();
-    private List<Triangle> triangle = new ArrayList<>();
+    private List<Shape> shapes = new ArrayList<>();
+    private Triangle triangle = new Triangle(2,4, "tr1");
+    private Square square = new Square(2.4, "kwadrat1");
+    private Circle circle = new Circle(4, "kolo10");
 
-    public ShapeCollector(List<Circle> circle, List<Square> square, List<Triangle> triangle) {
-        this.circle = circle;
-        this.square = square;
-        this.triangle = triangle;
+    public ShapeCollector() {
     }
 
-    public void addFigure(Shape shape){
+    public void addFigure(List<Shape> shape){
+        //Circle circle = new Circle(5, "kolo6");
+        //List<Shape> shape = new ArrayList<>();
+        shape.add(circle);
 
     }
     public void removeFigure(Shape shape) {
 
     }
-    public int getFigure(int n){
-        return 10;
+
+    public List<Shape> getFigure(int n){
+        List<Shape> shapes = new ArrayList<>();
+
+        return null;
     }
-    public void showFigures(){
+
+    public String showFigures(){
+        Triangle triangle = new Triangle(3,5, "tr2");
+        Square square = new Square(3, "kwadrat2");
+        Circle circle = new Circle(7,"kolo8");
+        String result = circle.getShapeName() + square.getShapeName() + triangle.getShapeName();
+        return result;
 
     }
-    public int getFigureQuantity(int i){
-        return 10;
+    public int getFigureQuantity(){
+        //return 1;
+        return shapes.size();
+    }
+
+    public List<Shape> getShapes() {
+        return shapes;
+    }
+
+    public Circle getCircle() {
+        return circle;
+    }
+
+    public Square getSquare() {
+        return square;
+    }
+
+    public Triangle getTriangle() {
+        return triangle;
     }
 }
