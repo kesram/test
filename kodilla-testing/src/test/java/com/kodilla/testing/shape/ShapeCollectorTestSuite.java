@@ -33,7 +33,7 @@ public class ShapeCollectorTestSuite {
             Circle circle = new Circle();
             ShapeCollector test = new ShapeCollector();
             //When
-            test.addFigure((Shape) circle);
+            test.addFigure(circle);
             //Then
             Assertions.assertEquals(1, test.getShapes().size());
 
