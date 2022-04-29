@@ -10,18 +10,30 @@ import java.util.stream.Stream;
 
 public class FileReader {
 
-    public void readFile() {
+    public void readFile() throws FileReaderException {
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource("names.txt").getFile());
 
         try(Stream<String> fileLines = Files.lines(Paths.get(file.getPath()))){
             fileLines.forEach(System.out::println);
         } catch (IOException e) {
-            System.out.println("Błąd odczytu pliku" + e);
+            throw new FileReaderException();
         } finally {
             System.out.println("I'm gonna be here... always!!" + LocalDate.now());
         }
 
         System.out.println(file.getPath());
+    }
+
+    public void readFile(final String filename) throws FileReaderException {
+        ClassLoader classLoader = getClass().getClassLoader();
+
+        try(Stream<String> fileLines = Files.lines(Path.of(classLoader.getResource(filename).toURI()))){
+            fileLines.forEach(System.out::println);
+        } catch (Exception e) {
+            throw new FileReaderException();
+        } finally {
+            System.out.println("I'm gonna be here... always!!" + LocalDate.now());
+        }
     }
 }
