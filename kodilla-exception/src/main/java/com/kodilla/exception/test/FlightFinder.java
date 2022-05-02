@@ -12,13 +12,10 @@ public class FlightFinder {
 
     public Boolean findFlight(Flight flight) throws RouteNotFoundException {
 
-        Boolean result = timetable.get(flight.getArrivalAirport());
-        if (result == null) {
+        if(timetable.containsKey(flight.getArrivalAirport())){
+            return timetable.get(flight.getArrivalAirport());
+        } else {
             throw new RouteNotFoundException("ERROR: Arrival airport is not available");
-        } else if (result) {
-            System.out.println(flight.getArrivalAirport() + " is on our list ");
-        } else
-            System.out.println(flight.getArrivalAirport() + " is not on our list ");
-        return result;
+        }
     }
 }
