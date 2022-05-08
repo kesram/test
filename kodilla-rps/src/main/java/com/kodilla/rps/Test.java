@@ -1,2 +1,6 @@
-package com.kodilla.rps;public class Test {
+package com.kodilla.rps;
+
+public class Test {
+
 }
+
