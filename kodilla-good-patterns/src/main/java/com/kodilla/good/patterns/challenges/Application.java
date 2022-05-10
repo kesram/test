@@ -3,15 +3,15 @@ package com.kodilla.good.patterns.challenges;
 import java.time.LocalDateTime;
 
 public class Application {
-    public static void main(String[] args) {
-
-        RentRequestRetriever rentRequestRetriever = new RentRequestRetriever();
-        RentRequest rentRequest = rentRequestRetriever.retrieve();
-
-        RentalProcessor rentalProcessor = new RentalProcessor(
-                new MailService(), new CarRentalService(), new CarRentalRepository());
-        rentalProcessor.process(rentRequest);
-    }
+//    public static void main(String[] args) {
+//
+//        RentRequestRetriever rentRequestRetriever = new RentRequestRetriever();
+//        RentRequest rentRequest = rentRequestRetriever.retrieve();
+//
+//        RentalProcessor rentalProcessor = new RentalProcessor(
+//                new MailService(), new CarRentalService(), new CarRentalRepository());
+//        rentalProcessor.process(rentRequest);
+//    }
 //        User user = new User("John", "Wekl");
 //
 //        LocalDateTime rentFrom = LocalDateTime.of(2017, 8, 1, 12, 0);
@@ -33,4 +33,4 @@ public class Application {
 //            System.out.println("Car rent has been rejected!");
 //        }
     }
-}
+
