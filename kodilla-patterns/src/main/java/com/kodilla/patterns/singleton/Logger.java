@@ -1,6 +1,7 @@
 package com.kodilla.patterns.singleton;
 
-public class Logger {
+public enum Logger {
+    LOG;
     private String lastLog = "";
 
     public void log(String log) {
