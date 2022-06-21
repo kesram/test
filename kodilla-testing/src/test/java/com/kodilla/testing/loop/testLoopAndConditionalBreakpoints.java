@@ -15,6 +15,7 @@ public class testLoopAndConditionalBreakpoints {
             sum+=n;
             System.out.println("["+n+"] Sum equals: " + sum);
         }
+
         //Then
         assertEquals(499500,sum);
     }
