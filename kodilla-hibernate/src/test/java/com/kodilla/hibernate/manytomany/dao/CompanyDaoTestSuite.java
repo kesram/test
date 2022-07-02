@@ -6,12 +6,17 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @SpringBootTest
 public class CompanyDaoTestSuite {
     @Autowired
     private CompanyDao companyDao;
+    @Autowired
+    private EmployeeDao employeeDao;
 
     @Test
     void testSaveManyToMany(){
@@ -55,6 +60,71 @@ public class CompanyDaoTestSuite {
             companyDao.deleteById(dataMaestersId);
             companyDao.deleteById(greyMatterId);
         } catch (Exception e) {
+            //do nothing
+        }
+    }
+
+    @Test
+    void testNamedNativeQueries(){
+        //Given
+        Employee johnSmith = new Employee("John", "Smith");
+        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
+        Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
+
+        Company softwareMachine = new Company("Software Machine");
+        Company dataMaesters = new Company("Data Maesters");
+        Company greyDataMatter = new Company("Grey DataMatter");
+
+        softwareMachine.getEmployees().add(johnSmith);
+        dataMaesters.getEmployees().add(stephanieClarckson);
+        dataMaesters.getEmployees().add(lindaKovalsky);
+        greyDataMatter.getEmployees().add(johnSmith);
+        greyDataMatter.getEmployees().add(lindaKovalsky);
+
+        johnSmith.getCompanies().add(softwareMachine);
+        johnSmith.getCompanies().add(greyDataMatter);
+        stephanieClarckson.getCompanies().add(dataMaesters);
+        lindaKovalsky.getCompanies().add(dataMaesters);
+        lindaKovalsky.getCompanies().add(greyDataMatter);
+
+        companyDao.save(softwareMachine);
+        companyDao.save(dataMaesters);
+        companyDao.save(greyDataMatter);
+        //When
+        List<Company> dat = companyDao.searchCompany("Dat");
+        List<Company> mac = companyDao.searchCompany("mac");
+        //Then
+        assertEquals(2, dat.size());
+        assertEquals(1, mac.size());
+        //CleanUp
+        try{
+            companyDao.deleteAll();
+        } catch (Exception e){
+            //do nothing
+        }
+    }
+
+    @Test
+    void testNamedQueries(){
+        //Given
+        Employee janKowalski = new Employee("Jan", "Kowalski");
+        Employee krzysPuchatek = new Employee("Krzys", "Puchatek");
+        Employee polaKowalski = new Employee("Pola", "Kowalski");
+        employeeDao.save(janKowalski);
+        employeeDao.save(krzysPuchatek);
+        employeeDao.save(polaKowalski);
+        //When
+        List<Employee> kowalski = employeeDao.searchingEmployeeWithLastname("Kowalski");
+        List<Employee> puchatek = employeeDao.searchingEmployeeWithLastname("Puchatek");
+        List<Employee> smith = employeeDao.searchingEmployeeWithLastname("Smith");
+        //Then
+        assertEquals(0, smith.size());
+        assertEquals(2, kowalski.size());
+        assertEquals(1, puchatek.size());
+        //CleanUp
+        try{
+            employeeDao.deleteAll();
+        } catch(Exception e){
             //do nothing
         }
     }
