@@ -12,6 +12,11 @@ import java.util.List;
                 " WHERE COMPANY_NAME LIKE CONCAT('%',:LETTERS, '%')",
         resultClass = Company.class
 )
+@NamedNativeQuery(
+        name = "Company.findCompanyByFragmentName",
+        query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE CONCAT ('%', :FRAGMENT , '%')",
+        resultClass = Company.class
+)
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
